@@ -32,6 +32,10 @@ docker compose -f src/main/docker/sonar.yml up -d
 ./gradlew clean build sonar --info
 ```
 
+```bash
+docker compose -f src/main/docker/postgresql.yml up -d
+```
+
 
 <!-- jhipster-needle-startupCommand -->
 
@@ -42,5 +46,6 @@ docker compose -f src/main/docker/sonar.yml up -d
 - [Assertions](documentation/assertions.md)
 - [Logs Spy](documentation/logs-spy.md)
 - [CORS configuration](documentation/cors-configuration.md)
+- [Postgresql](documentation/postgresql.md)
 
 <!-- jhipster-needle-documentation -->

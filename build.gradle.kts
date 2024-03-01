@@ -163,13 +163,18 @@ dependencies {
   implementation(libs.spring.boot.starter.validation)
   implementation(libs.spring.boot.starter.web)
   implementation(libs.spring.boot.starter.actuator)
+  implementation(libs.spring.boot.starter.data.jpa)
+  implementation(libs.hikariCP)
+  implementation(libs.hibernate.core)
   // jhipster-needle-gradle-implementation-dependencies
   // jhipster-needle-gradle-compile-dependencies
+  runtimeOnly(libs.postgresql)
   // jhipster-needle-gradle-runtime-dependencies
 
   testImplementation(libs.protobuf.java.util)
   testImplementation(libs.spring.boot.starter.test)
   testImplementation(libs.reflections)
+  testImplementation(libs.testcontainers.postgresql)
   // jhipster-needle-gradle-test-dependencies
 }
 

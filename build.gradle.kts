@@ -2,6 +2,7 @@ plugins {
   java
   alias(libs.plugins.sonarqube)
   checkstyle
+  alias(libs.plugins.protobuf)
   // jhipster-needle-gradle-plugins
 }
 
@@ -45,6 +46,13 @@ configurations.checkstyle {
   }
 }
 
+
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.asProvider().get()}"
+  }
+}
+
 // jhipster-needle-gradle-plugins-configurations
 
 repositories {
@@ -60,6 +68,7 @@ ext {
 }
 
 dependencies {
+  implementation(libs.protobuf.java)
   // jhipster-needle-gradle-implementation-dependencies
   // jhipster-needle-gradle-compile-dependencies
   // jhipster-needle-gradle-runtime-dependencies
@@ -67,6 +76,7 @@ dependencies {
   testImplementation(libs.junit.params)
   testImplementation(libs.assertj)
   testImplementation(libs.mockito)
+  testImplementation(libs.protobuf.java.util)
   // jhipster-needle-gradle-test-dependencies
 }
 

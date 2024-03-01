@@ -11,6 +11,7 @@ bundles = {}
 	mockito = "5.10.0"
 	os-maven-plugin = "1.7.1"
 	liquibase = "4.26.0"
+	json-web-token = "0.12.5"
 	git-properties = "2.4.1"
 	assertj = "3.25.3"
 	spring-boot = "3.2.3"
@@ -59,6 +60,12 @@ bundles = {}
 
 		[libraries.reflections.version]
 			ref = "reflections"
+	[libraries.jjwt-impl]
+		name = "jjwt-impl"
+		group = "io.jsonwebtoken"
+
+		[libraries.jjwt-impl.version]
+			ref = "json-web-token"
 	[libraries.protobuf-java-util]
 		name = "protobuf-java-util"
 		group = "com.google.protobuf"
@@ -71,6 +78,9 @@ bundles = {}
 
 		[libraries.spring-boot-dependencies.version]
 			ref = "spring-boot"
+	[libraries.spring-security-test]
+		name = "spring-security-test"
+		group = "org.springframework.security"
 	[libraries.testcontainers-postgresql]
 		name = "postgresql"
 		group = "org.testcontainers"
@@ -89,6 +99,12 @@ bundles = {}
 	[libraries.hikariCP]
 		name = "HikariCP"
 		group = "com.zaxxer"
+	[libraries.jjwt-api]
+		name = "jjwt-api"
+		group = "io.jsonwebtoken"
+
+		[libraries.jjwt-api.version]
+			ref = "json-web-token"
 	[libraries.spring-boot-starter]
 		name = "spring-boot-starter"
 		group = "org.springframework.boot"
@@ -112,6 +128,15 @@ bundles = {}
 		group = "org.springframework.boot"
 	[libraries.spring-boot-configuration-processor]
 		name = "spring-boot-configuration-processor"
+		group = "org.springframework.boot"
+	[libraries.jjwt-jackson]
+		name = "jjwt-jackson"
+		group = "io.jsonwebtoken"
+
+		[libraries.jjwt-jackson.version]
+			ref = "json-web-token"
+	[libraries.spring-boot-starter-security]
+		name = "spring-boot-starter-security"
 		group = "org.springframework.boot"
 	[libraries.commons-lang3]
 		name = "commons-lang3"

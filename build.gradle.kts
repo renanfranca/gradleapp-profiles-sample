@@ -1,6 +1,7 @@
 plugins {
   java
   alias(libs.plugins.sonarqube)
+  checkstyle
   // jhipster-needle-gradle-plugins
 }
 
@@ -29,6 +30,19 @@ sonarqube {
       property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
       property("sonar.junit.reportPaths", "build/test-results/test,build/test-results/integrationTest")
     }
+}
+
+
+checkstyle {
+  configFile = rootProject.file("checkstyle.xml")
+  toolVersion = libs.versions.checkstyle.get()
+}
+
+// Workaround for https://github.com/gradle/gradle/issues/27035
+configurations.checkstyle {
+  resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
+    select("com.google.guava:guava:0")
+  }
 }
 
 // jhipster-needle-gradle-plugins-configurations

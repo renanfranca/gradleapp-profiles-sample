@@ -37,5 +37,7 @@ docker compose -f src/main/docker/sonar.yml up -d
 ## Documentation
 
 - [sonar](documentation/sonar.md)
+- [Package types](documentation/package-types.md)
+- [Assertions](documentation/assertions.md)
 
 <!-- jhipster-needle-documentation -->

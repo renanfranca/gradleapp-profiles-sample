@@ -6,6 +6,7 @@ plugins {
   jacoco
   alias(libs.plugins.spring.boot)
   alias(libs.plugins.jib)
+  alias(libs.plugins.git.properties)
   // jhipster-needle-gradle-plugins
 }
 
@@ -133,6 +134,12 @@ jib {
     permissions = mapOf("/entrypoint.sh" to "755")
   }
 }
+
+gitProperties {
+  failOnNoGitDirectory = false
+  keys = listOf("git.branch", "git.commit.id.abbrev", "git.commit.id.describe", "git.build.version")
+}
+
 // jhipster-needle-gradle-plugins-configurations
 
 repositories {

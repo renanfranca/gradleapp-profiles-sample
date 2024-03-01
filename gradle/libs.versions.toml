@@ -9,6 +9,7 @@ bundles = {}
 	jacoco = "0.8.11"
 	mockito = "5.10.0"
 	os-maven-plugin = "1.7.1"
+	git-properties = "2.4.1"
 	assertj = "3.25.3"
 	spring-boot = "3.2.3"
 	commons-lang3 = "3.14.0"
@@ -30,6 +31,11 @@ bundles = {}
 
 		[plugins.sonarqube.version]
 			ref = "sonarqube"
+	[plugins.git-properties]
+		id = "com.gorylenko.gradle-git-properties"
+
+		[plugins.git-properties.version]
+			ref = "git-properties"
 	[plugins.spring-boot]
 		id = "org.springframework.boot"
 

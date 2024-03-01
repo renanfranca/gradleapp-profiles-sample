@@ -4,6 +4,7 @@ bundles = {}
 	protobuf = "3.25.3"
 	protobuf-plugin = "0.9.4"
 	sonarqube = "4.4.1.3373"
+	jacoco = "0.8.11"
 	assertj = "3.25.3"
 	mockito = "5.10.0"
 	checkstyle = "10.14.0"

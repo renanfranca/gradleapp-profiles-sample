@@ -3,6 +3,7 @@ plugins {
   alias(libs.plugins.sonarqube)
   checkstyle
   alias(libs.plugins.protobuf)
+  jacoco
   // jhipster-needle-gradle-plugins
 }
 
@@ -53,6 +54,43 @@ protobuf {
   }
 }
 
+
+jacoco {
+  toolVersion = libs.versions.jacoco.get()
+}
+
+tasks.jacocoTestReport {
+  dependsOn("test", "integrationTest")
+  reports {
+    xml.required.set(true)
+    html.required.set(true)
+  }
+  executionData.setFrom(fileTree(buildDir).include("**/jacoco/test.exec", "**/jacoco/integrationTest.exec"))
+}
+
+tasks.jacocoTestCoverageVerification {
+  dependsOn("jacocoTestReport")
+  violationRules {
+
+      rule {
+          element = "CLASS"
+
+          limit {
+              counter = "LINE"
+              value = "COVEREDRATIO"
+              minimum = "1.00".toBigDecimal()
+          }
+
+          limit {
+              counter = "BRANCH"
+              value = "COVEREDRATIO"
+              minimum = "1.00".toBigDecimal()
+          }
+      }
+  }
+  executionData.setFrom(fileTree(buildDir).include("**/jacoco/test.exec", "**/jacoco/integrationTest.exec"))
+}
+
 // jhipster-needle-gradle-plugins-configurations
 
 repositories {
@@ -87,6 +125,7 @@ tasks.test {
     excludeTestsMatching("**CucumberTest*")
   }
   useJUnitPlatform()
+  finalizedBy("jacocoTestCoverageVerification")
 }
 
 val integrationTest = task<Test>("integrationTest") {

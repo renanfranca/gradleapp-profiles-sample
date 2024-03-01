@@ -10,6 +10,7 @@ bundles = {}
 	jacoco = "0.8.11"
 	mockito = "5.10.0"
 	os-maven-plugin = "1.7.1"
+	liquibase = "4.26.0"
 	git-properties = "2.4.1"
 	assertj = "3.25.3"
 	spring-boot = "3.2.3"
@@ -43,6 +44,12 @@ bundles = {}
 		[plugins.spring-boot.version]
 			ref = "spring-boot"
 [libraries]
+	[libraries.liquibase-core]
+		name = "liquibase-core"
+		group = "org.liquibase"
+
+		[libraries.liquibase-core.version]
+			ref = "liquibase"
 	[libraries.spring-boot-starter-test]
 		name = "spring-boot-starter-test"
 		group = "org.springframework.boot"
@@ -70,6 +77,9 @@ bundles = {}
 
 		[libraries.testcontainers-postgresql.version]
 			ref = "testcontainers"
+	[libraries.h2]
+		name = "h2"
+		group = "com.h2database"
 	[libraries.hibernate-core]
 		name = "hibernate-core"
 		group = "org.hibernate.orm"

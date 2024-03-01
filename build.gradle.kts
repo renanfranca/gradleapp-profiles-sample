@@ -166,6 +166,7 @@ dependencies {
   implementation(libs.spring.boot.starter.data.jpa)
   implementation(libs.hikariCP)
   implementation(libs.hibernate.core)
+  implementation(libs.liquibase.core)
   // jhipster-needle-gradle-implementation-dependencies
   // jhipster-needle-gradle-compile-dependencies
   runtimeOnly(libs.postgresql)
@@ -175,6 +176,7 @@ dependencies {
   testImplementation(libs.spring.boot.starter.test)
   testImplementation(libs.reflections)
   testImplementation(libs.testcontainers.postgresql)
+  testImplementation(libs.h2)
   // jhipster-needle-gradle-test-dependencies
 }
 

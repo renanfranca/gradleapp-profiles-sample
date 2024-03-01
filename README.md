@@ -18,6 +18,7 @@ npm install
 
 ## Local environment
 
+- [Local server](http://localhost:8081)
 
 <!-- jhipster-needle-localEnvironment -->
 
@@ -40,5 +41,6 @@ docker compose -f src/main/docker/sonar.yml up -d
 - [Package types](documentation/package-types.md)
 - [Assertions](documentation/assertions.md)
 - [Logs Spy](documentation/logs-spy.md)
+- [CORS configuration](documentation/cors-configuration.md)
 
 <!-- jhipster-needle-documentation -->

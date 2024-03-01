@@ -39,5 +39,6 @@ docker compose -f src/main/docker/sonar.yml up -d
 - [sonar](documentation/sonar.md)
 - [Package types](documentation/package-types.md)
 - [Assertions](documentation/assertions.md)
+- [Logs Spy](documentation/logs-spy.md)
 
 <!-- jhipster-needle-documentation -->

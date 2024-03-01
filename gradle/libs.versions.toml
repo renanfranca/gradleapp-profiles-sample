@@ -7,11 +7,12 @@ bundles = {}
 	sonarqube = "4.4.1.3373"
 	reflections = "0.10.2"
 	jacoco = "0.8.11"
+	mockito = "5.10.0"
+	os-maven-plugin = "1.7.1"
 	assertj = "3.25.3"
 	spring-boot = "3.2.3"
-	mockito = "5.10.0"
+	commons-lang3 = "3.14.0"
 	checkstyle = "10.14.0"
-	os-maven-plugin = "1.7.1"
 	junit-jupiter = "5.10.2"
 [plugins]
 	[plugins.protobuf]
@@ -77,6 +78,9 @@ bundles = {}
 	[libraries.commons-lang3]
 		name = "commons-lang3"
 		group = "org.apache.commons"
+
+		[libraries.commons-lang3.version]
+			ref = "commons-lang3"
 	[libraries.spring-boot-starter-actuator]
 		name = "spring-boot-starter-actuator"
 		group = "org.springframework.boot"

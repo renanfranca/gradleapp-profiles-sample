@@ -7,6 +7,7 @@ bundles = {}
 	testcontainers = "1.19.6"
 	sonarqube = "4.4.1.3373"
 	reflections = "0.10.2"
+	cucumber = "7.15.0"
 	jacoco = "0.8.11"
 	mockito = "5.10.0"
 	os-maven-plugin = "1.7.1"
@@ -88,6 +89,12 @@ bundles = {}
 	[libraries.spring-boot-starter-validation]
 		name = "spring-boot-starter-validation"
 		group = "org.springframework.boot"
+	[libraries.cucumber-java]
+		name = "cucumber-java"
+		group = "io.cucumber"
+
+		[libraries.cucumber-java.version]
+			ref = "cucumber"
 	[libraries.jjwt-jackson]
 		name = "jjwt-jackson"
 		group = "io.jsonwebtoken"
@@ -109,6 +116,9 @@ bundles = {}
 
 		[libraries.jjwt-impl.version]
 			ref = "json-web-token"
+	[libraries.junit-platform-suite]
+		name = "junit-platform-suite"
+		group = "org.junit.platform"
 	[libraries.protobuf-java-util]
 		name = "protobuf-java-util"
 		group = "com.google.protobuf"
@@ -118,6 +128,12 @@ bundles = {}
 	[libraries.spring-security-test]
 		name = "spring-security-test"
 		group = "org.springframework.security"
+	[libraries.cucumber-junit-platform-engine]
+		name = "cucumber-junit-platform-engine"
+		group = "io.cucumber"
+
+		[libraries.cucumber-junit-platform-engine.version]
+			ref = "cucumber"
 	[libraries.hibernate-core]
 		name = "hibernate-core"
 		group = "org.hibernate.orm"
@@ -157,3 +173,9 @@ bundles = {}
 
 		[libraries.commons-lang3.version]
 			ref = "commons-lang3"
+	[libraries.cucumber-spring]
+		name = "cucumber-spring"
+		group = "io.cucumber"
+
+		[libraries.cucumber-spring.version]
+			ref = "cucumber"

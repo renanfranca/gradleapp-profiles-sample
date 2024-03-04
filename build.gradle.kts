@@ -150,8 +150,24 @@ repositories {
 group = "tech.jhipster.gradleapp"
 version = "0.0.1-SNAPSHOT"
 
-ext {
-  // jhipster-needle-gradle-properties
+val localProfile by extra("true")
+val springProfilesActive by extra("")
+// jhipster-needle-gradle-properties
+
+if (localProfile.toBoolean()) {
+  apply(plugin = "profile-local")
+}
+// jhipster-needle-profile-activation
+
+tasks.build {
+  dependsOn("processResources")
+}
+
+tasks.processResources {
+  filesMatching("**/application.yml") {
+    filter { it.replace("@spring.profiles.active@", springProfilesActive) }
+  }
+  // jhipster-needle-gradle-process-resources
 }
 
 dependencies {

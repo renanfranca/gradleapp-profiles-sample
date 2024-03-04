@@ -97,6 +97,7 @@ defaultTasks("bootRun")
 
 springBoot {
   mainClass = "tech.jhipster.gradleapp.GradleappApp"
+
 }
 
 jib {
@@ -216,14 +217,14 @@ fun profile(): String {
 
 fun profilesActivation(): String {
     return listOf(::localProfileActivation, ::linuxProfileActivation)
-        .firstNotNullOfOrNull { it().takeIf { profile -> profile != defaultProfile() } }
+        .firstNotNullOfOrNull { it() }
         ?: defaultProfile()
 }
 
-fun localProfileActivation(): String = "local"
+fun localProfileActivation(): String? = "local"
 
-fun linuxProfileActivation(): String =
-    if (System.getProperty("os.name").lowercase().contains("linux")) "linux" else defaultProfile()
+fun linuxProfileActivation(): String? =
+    if (System.getProperty("os.name").lowercase().contains("linux")) "linux" else null
 
 fun profilesProperties(profile: String, line: String): String {
   return when (profile) {

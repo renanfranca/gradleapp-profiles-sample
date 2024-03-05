@@ -150,11 +150,17 @@ repositories {
 group = "tech.jhipster.gradleapp"
 version = "0.0.1-SNAPSHOT"
 
-val localProfile by extra("true")
 val springProfilesActive by extra("")
 // jhipster-needle-gradle-properties
 
-if (localProfile.toBoolean()) {
+val profiles = (project.findProperty("profiles") as String? ?: "")
+  .split(",")
+  .map { it.trim() }
+  .filter { it.isNotEmpty() }
+if (profiles.contains("dev")) {
+  apply(plugin = "profile-dev")
+}
+if (profiles.isEmpty() || profiles.contains("local")) {
   apply(plugin = "profile-local")
 }
 // jhipster-needle-profile-activation

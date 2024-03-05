@@ -97,7 +97,6 @@ defaultTasks("bootRun")
 
 springBoot {
   mainClass = "tech.jhipster.gradleapp.GradleappApp"
-
 }
 
 jib {
@@ -148,10 +147,6 @@ repositories {
 group = "tech.jhipster.gradleapp"
 version = "0.0.1-SNAPSHOT"
 
-ext {
-  // jhipster-needle-gradle-properties
-}
-
 dependencies {
   implementation(libs.protobuf.java)
   implementation(platform(libs.spring.boot.dependencies))
@@ -189,63 +184,26 @@ dependencies {
   // jhipster-needle-gradle-test-dependencies
 }
 
+val profile = project.findProperty("profile") as String? ?: "default"
+val activateByDefaultProfile by extra("local")
+val springProfilesActive by extra("default")
+
+if (profile == "local" || (profile == "default" && activateByDefaultProfile == "local")) {
+  apply(plugin = "profile-local")
+}
+
+if (profile == "dev") apply(plugin = "profile-dev")
+
 tasks.build {
   dependsOn("processResources")
 }
 
 tasks.processResources {
-  var profile = profile()
-  filesMatching("**") {
-    filter { line -> profilesProperties(profile, line) }
+  filesMatching("**/application.yml") {
+    filter { it.replace("@spring.profiles.active@", springProfilesActive) }
   }
   // jhipster-needle-gradle-process-resources
 }
-
-fun defaultProfile(): String {
-  return "default"
-}
-
-fun profile(): String {
-  var profile = project.findProperty("profile") as String? ?: defaultProfile()
-  println("Selected Spring Boot profile: $profile")
-  println("Os name: ${System.getProperty("os.name").lowercase()}")
-  if (profile != defaultProfile()) {
-    return profile
-  }
-  return profilesActivation()
-}
-
-fun profilesActivation(): String {
-    return listOf(::localProfileActivation, ::linuxProfileActivation)
-        .firstNotNullOfOrNull { it() }
-        ?: defaultProfile()
-}
-
-fun localProfileActivation(): String? = "local"
-
-fun linuxProfileActivation(): String? =
-    if (System.getProperty("os.name").lowercase().contains("linux")) "linux" else null
-
-fun profilesProperties(profile: String, line: String): String {
-  return when (profile) {
-    "local" -> localProfileProperties(profile, line)
-    "linux" -> linuxProfileProperties(profile, line)
-    else -> line
-  }
-}
-
-fun localProfileProperties(profile: String, line: String): String {
-  var lineReplaced: String = line
-  lineReplaced = lineReplaced.replace("@spring.profiles.active@", profile)
-  return lineReplaced
-}
-
-fun linuxProfileProperties(profile: String, line: String): String {
-  var lineReplaced: String = line
-  lineReplaced = lineReplaced.replace("@spring.profiles.active@", profile)
-  return lineReplaced
-}
-// jhipster-needle-gradle-profiles
 
 tasks.test {
   filter {

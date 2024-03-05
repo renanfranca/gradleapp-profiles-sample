@@ -10,7 +10,7 @@ spring:
     hikari:
       poolName: Hikari
       auto-commit: false
-    password: ""
+    password: ''
     driver-class-name: org.postgresql.Driver
     username: gradleapp
     url: jdbc:postgresql://localhost:5432/gradleapp
@@ -83,11 +83,10 @@ application:
     jwt-base64-secret: NmE2NDhmMmQ5OWQzYzk4NmE4NjNlMmQzNmU3ZTU4ZDY2MmUxOWEwZGI4YTk4NDY0MTk4MmQyMWZlNDNlM2FjYg==
     remember-me-token-validity: P365D
     token-validity: P1D
-    content-security-policy:
-      "default-src 'self'; frame-src 'self' data:; script-src
-      'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src
-      'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:;
-      font-src 'self' data: https://fonts.gstatic.com;"
+    content-security-policy: 'default-src ''self''; frame-src ''self'' data:; script-src
+      ''self'' ''unsafe-inline'' ''unsafe-eval'' https://storage.googleapis.com; style-src
+      ''self'' ''unsafe-inline'' https://fonts.googleapis.com; img-src ''self'' data:;
+      font-src ''self'' data: https://fonts.gstatic.com;'
 springdoc:
   swagger-ui:
     operationsSorter: alpha

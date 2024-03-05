@@ -3,4 +3,4 @@ plugins {
   // jhipster-needle-gradle-plugins
 }
 
-val springProfilesActive by extra("dev")
+val springProfilesActive by extra("springProfileFoo")

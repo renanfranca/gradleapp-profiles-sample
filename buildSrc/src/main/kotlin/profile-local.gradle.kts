@@ -11,4 +11,4 @@ dependencies {
   runtimeOnly("org.springframework.boot:spring-boot-devtools")
 }
 
-val springProfilesActive by extra("local")
+val springProfilesActive by extra("springProfileBar")

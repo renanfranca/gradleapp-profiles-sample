@@ -4,6 +4,8 @@ spring:
   threads:
     virtual:
       enabled: true
+  profiles:
+    active: "@spring.profiles.active@"
   datasource:
     hikari:
       poolName: Hikari
@@ -57,13 +59,13 @@ management:
       base-path: /management
       exposure:
         include:
-        - configprops
-        - env
-        - health
-        - info
-        - logfile
-        - loggers
-        - threaddump
+          - configprops
+          - env
+          - health
+          - info
+          - logfile
+          - loggers
+          - threaddump
   endpoint:
     health:
       probes:

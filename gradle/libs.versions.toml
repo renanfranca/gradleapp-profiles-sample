@@ -179,3 +179,9 @@ bundles = {}
 
 		[libraries.cucumber-spring.version]
 			ref = "cucumber"
+  [libraries.spring-boot-devtools]
+    name = "spring-boot-devtools"
+    group = "org.springframework.boot"
+
+    [libraries.spring-boot-devtools.version]
+      ref = "spring-boot"

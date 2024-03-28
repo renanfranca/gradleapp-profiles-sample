@@ -50,7 +50,6 @@ configurations.checkstyle {
   }
 }
 
-
 protobuf {
   protoc {
     artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.asProvider().get()}"
@@ -94,13 +93,11 @@ tasks.jacocoTestCoverageVerification {
   executionData.setFrom(fileTree(buildDir).include("**/jacoco/test.exec", "**/jacoco/integrationTest.exec"))
 }
 
-
-defaultTasks "bootRun"
+defaultTasks("bootRun")
 
 springBoot {
   mainClass = "tech.jhipster.gradleapp.GradleappApp"
 }
-
 
 jib {
   from {
@@ -150,9 +147,20 @@ repositories {
 group = "tech.jhipster.gradleapp"
 version = "0.0.1-SNAPSHOT"
 
-ext {
-  // jhipster-needle-gradle-properties
+val springProfilesActive by extra("")
+// jhipster-needle-gradle-properties
+
+val profiles = (project.findProperty("profiles") as String? ?: "")
+  .split(",")
+  .map { it.trim() }
+  .filter { it.isNotEmpty() }
+if (profiles.contains("dev")) {
+  apply(plugin = "profile-dev")
 }
+if (profiles.isEmpty() || profiles.contains("local")) {
+  apply(plugin = "profile-local")
+}
+// jhipster-needle-profile-activation
 
 dependencies {
   implementation(libs.protobuf.java)
@@ -189,6 +197,17 @@ dependencies {
   testImplementation(libs.cucumber.spring)
   testImplementation(libs.junit.platform.suite)
   // jhipster-needle-gradle-test-dependencies
+}
+
+tasks.build {
+  dependsOn("processResources")
+}
+
+tasks.processResources {
+  filesMatching("**/application.yml") {
+    filter { it.replace("@spring.profiles.active@", springProfilesActive) }
+  }
+  // jhipster-needle-gradle-process-resources
 }
 
 tasks.test {

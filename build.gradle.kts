@@ -6,7 +6,7 @@ plugins {
   jacoco
   alias(libs.plugins.spring.boot)
   alias(libs.plugins.jib)
-  alias(libs.plugins.git.properties)
+//  alias(libs.plugins.git.properties)
   // jhipster-needle-gradle-plugins
 }
 
@@ -132,10 +132,10 @@ jib {
   }
 }
 
-gitProperties {
-  failOnNoGitDirectory = false
-  keys = listOf("git.branch", "git.commit.id.abbrev", "git.commit.id.describe", "git.build.version")
-}
+//gitProperties {
+//  failOnNoGitDirectory = false
+//  keys = listOf("git.branch", "git.commit.id.abbrev", "git.commit.id.describe", "git.build.version")
+//}
 
 // jhipster-needle-gradle-plugins-configurations
 

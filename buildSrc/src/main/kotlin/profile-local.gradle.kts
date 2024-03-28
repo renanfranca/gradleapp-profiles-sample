@@ -1,6 +1,12 @@
 plugins {
   java
+  id("com.gorylenko.gradle-git-properties")
   // jhipster-needle-gradle-plugins
+}
+
+gitProperties {
+  failOnNoGitDirectory = false
+  keys = listOf("git.branch", "git.commit.id.abbrev", "git.commit.id.describe", "git.build.version")
 }
 
 val libs = versionCatalogs.named("libs")

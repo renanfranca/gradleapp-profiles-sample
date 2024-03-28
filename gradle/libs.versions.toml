@@ -47,6 +47,12 @@ bundles = {}
 		[plugins.spring-boot.version]
 			ref = "spring-boot"
 [libraries]
+  [libraries.git-properties]
+    name = "gradle-git-properties"
+    group= "com.gorylenko.gradle-git-properties"
+
+    [libraries.git-properties.version]
+      ref = "git-properties"
 	[libraries.reflections]
 		name = "reflections"
 		group = "org.reflections"

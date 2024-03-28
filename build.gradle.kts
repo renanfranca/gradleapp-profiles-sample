@@ -147,6 +147,21 @@ repositories {
 group = "tech.jhipster.gradleapp"
 version = "0.0.1-SNAPSHOT"
 
+val springProfilesActive by extra("")
+// jhipster-needle-gradle-properties
+
+val profiles = (project.findProperty("profiles") as String? ?: "")
+  .split(",")
+  .map { it.trim() }
+  .filter { it.isNotEmpty() }
+if (profiles.contains("dev")) {
+  apply(plugin = "profile-dev")
+}
+if (profiles.isEmpty() || profiles.contains("local")) {
+  apply(plugin = "profile-local")
+}
+// jhipster-needle-profile-activation
+
 dependencies {
   implementation(libs.protobuf.java)
   implementation(platform(libs.spring.boot.dependencies))
@@ -183,16 +198,6 @@ dependencies {
   testImplementation(libs.junit.platform.suite)
   // jhipster-needle-gradle-test-dependencies
 }
-
-val profile = project.findProperty("profile") as String? ?: "default"
-val activateByDefaultProfile by extra("local")
-val springProfilesActive by extra("default")
-
-if (profile == "local" || (profile == "default" && activateByDefaultProfile == "local")) {
-  apply(plugin = "profile-local")
-}
-
-if (profile == "dev") apply(plugin = "profile-dev")
 
 tasks.build {
   dependsOn("processResources")

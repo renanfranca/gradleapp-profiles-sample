@@ -1,1 +1,6 @@
-val springProfilesActive by extra("dev")
+plugins {
+  java
+  // jhipster-needle-gradle-plugins
+}
+
+val springProfilesActive by extra("springProfileFoo")
